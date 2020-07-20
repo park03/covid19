@@ -1,5 +1,5 @@
 # 학생/학부모를 위한 코로나19 모니터링 앱 개발
-![사진](/images/covid_project.jpg)
+<img src="/images/covid_project.jpg" width="879" height="1165">
 
 
 ## 1. 개발 취지
