@@ -2,6 +2,8 @@
 
 ![코로나19프로젝트](/images/covid_project.jpg){: width="879" height="1165"}
 
+<img src="/images/covid_project.jpg" width="40%">
+
 ## 1. 개발 취지
 - 코로나19 바이러스 확산에 따른 학교 개학 연기 지속 확산(20.3월)
 - 20학년도 1학기 개학 지속 연기 불가에 따른 일부 개학 추진에 따라
