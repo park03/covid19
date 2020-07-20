@@ -3,7 +3,8 @@
 
 - 본 프로젝트를 통해 코로나블루 대처를 위한 스마트 로봇 및 어플 개발 기사가
 영남일보에 게재 되었습니다(2020-06-20)
-![영남일보기사](https://www.yeongnam.com/web/view.php?key=20200602001339189)
+
+[영남일보기사](https://www.yeongnam.com/web/view.php?key=20200602001339189)
 
 <img src="/images/covid_project.jpg" width="70%">
 
