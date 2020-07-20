@@ -104,7 +104,7 @@ class Login: #로그인 전용 클래스 생성
 ```
 - textbox에 입력된 값과 code속의 값이 일치할 경우 로그인되는 형태의 간단한 로그인창 구현 
 
-<img src="/images/tk_login.jpg" width="100%">
+<img src="/images/tk_login.jpg" width="20%">
 
 
 ### (2) 초기 화면
