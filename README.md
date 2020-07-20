@@ -1,8 +1,6 @@
 # 학생/학부모를 위한 코로나19 모니터링 앱 개발
 
-![코로나19프로젝트](/images/covid_project.jpg){: width="879" height="1165"}
-
-<img src="/images/covid_project.jpg" width="40%">
+<img src="/images/covid_project.jpg" width="70%">
 
 ## 1. 개발 취지
 - 코로나19 바이러스 확산에 따른 학교 개학 연기 지속 확산(20.3월)
