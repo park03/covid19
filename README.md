@@ -143,6 +143,8 @@ class usermode :
         label3.pack(side = TOP)
         label4.pack(side = TOP)
 ```
+<img src="/images/main.jpg" width="40%">
+
 - 상하단을 프레임으로 나누어 상단에 인물정보, 하단의 체온 정보를 나타냄
 
 
@@ -243,6 +245,8 @@ class usermode :
         listbox = Listbox(master=frameface, listvariable=values, height=6)
         listbox.pack(fill=BOTH)
 ```
+<img src="/images/face.jpg" width="40%">
+
 - 얼굴을 인식하여 표정에 따른 감정 정도를 나타내고자 하였음.
 - 얼굴 인식 및 감정분석 딥러닝이 필요한 기능으로 추후 구현하고자 함.
 
@@ -293,6 +297,8 @@ class powermode :
         label2=tk.Label(frame2, text="페이지2의 내용")
         label2.pack()
 ```
+<img src="/images/cam.jpg" width="40%">
+
 - 관리자모드로 접속 시 현재 로봇이 촬영중인 실시간 영상을 나타내도록 구현함.
 
 
