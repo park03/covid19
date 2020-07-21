@@ -1,0 +1,18 @@
+
+<SelectionBox>:
+    label: _label
+    color: (1, 0, 0, 1)
+    image_pane: None
+    canvas:
+        Color:
+            rgba: root.color
+        Line:
+            width: 2.
+            rectangle: (self.x, self.y, self.width, self.height)
+    TextInput:
+        id: _label
+        multiline: False
+        size_hint: 1, None
+        height: 50
+        center: root.center
+        on_text: root.image_pane.store_rectangles() if root.image_pane else None

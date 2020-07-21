@@ -1,0 +1,41 @@
+# -*- coding: utf-8 -*-
+
+<Bt@Button>
+    font_name:'HANDotum'
+<Manager>:
+
+    ScreenMain:
+        id:screen_main_id
+        name: 'ScreenMain'
+
+<ScreenMain>:
+    FloatLayout:
+        Rv:
+            pos_hint:{'x':0,'y':0.1}
+            id:rv            
+            data:self.data
+            viewclass: 'SelectableLabel'
+            SelectableRecycleBoxLayout:                
+                default_size: None, dp(56)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+                multiselect: False
+                touch_multiselect: True
+
+
+<SelectableLabel>:
+    # Draw a background to indicate selection
+    canvas.before:
+        Color:
+            rgba: (.0, .0, .2, .2) if self.selected else (0, 0, 0, 0)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    canvas.before:
+        Color:
+            rgba: (.0, .0, .2, .2) if self.selected else (0, 0, 0, 0)
+        Rectangle:
+            pos: self.pos
+            size: self.size  

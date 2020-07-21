@@ -1,0 +1,668 @@
+#:kivy 1.10.0
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+<SBt@Button>
+    background_color: (0,0,0,0)
+    background_normal:''
+    back_color:(0.9,0.5,0.8,1)
+    border_radius:[18]
+    canvas.before:
+        Color:
+            rgba:self.back_color
+        RoundedRectangle:
+            size:self.size
+            pos:self.pos
+            radius:self.border_radius
+
+<StrokeBt@Button>
+    background_color: (0,0,0,0)
+    background_normal:''
+    back_color:(0.9,0.8,0.8,1)
+    border_radius:[18]
+    # color:self.back_color
+    # bold:True
+    canvas.before:
+        Color:
+            rgba:self.back_color
+        RoundedRectangle:
+            size:self.size
+            pos:self.pos
+            radius:self.border_radius
+        # Color:
+        #     rgba:self.back_color
+        # Line:
+        #     rounded_rectangle:(self.pos[0],self.pos[1],self.size[0],self.size[1],self.border_radius) 
+        #     width:1.2
+
+<SignupBt@Button>
+    
+    background_color: (0,0,0,0)
+    background_normal:''
+    back_color:(0.9,0.5,0.8,1)
+    border_radius:[18]
+    # color:self.back_color
+    # bold:True
+    canvas.before:
+        Color:
+            rgba:self.back_color
+        RoundedRectangle:
+            size:self.size
+            pos:self.pos
+            radius:self.border_radius
+
+<SBt2@Button>
+    background_color: (0,0,0,0)
+    background_normal:''
+    back_color:(1,1,1,1)
+    border_radius:[10]
+    source_img:'kivy/graph.png'
+    canvas.before:
+        Color:
+            rgba:self.back_color
+        RoundedRectangle:
+            size:self.size
+            pos:self.pos
+            radius:self.border_radius
+            source:self.source_img
+
+
+<Manager>:
+    transition: FadeTransition()
+    FirstScreen:
+        id:screen_1
+        name: 'first'
+    SignupScreen:
+        id:screen_1_1
+        name: 'signup'
+    SecondScreen:
+        id:screen_2
+        name:'second'
+    DrawingScreen:
+        id:screen_2_1
+        name:'second_drawing'
+    GraphScreen:
+        id:screen_2_2
+        name:'second_graph'
+    InputScreen:
+        id:screen_2_3
+        name: 'second_input'
+    VideoScreen:
+        id:screen_2_4
+        name: 'second_video'
+    
+
+    ChildrenScreen:
+        id:screen_3
+        name:'third'
+    KidDrawingScreen:
+        id:screen_3_1
+        name:'third_drawing'
+    KidInputScreen:
+        id:screen_3_2
+        name: 'third_input'
+    KidVideoScreen:
+        id:screen_3_3
+        name: 'third_video'
+<FirstScreen>:
+    username: username
+    password: password
+    FloatLayout:
+        canvas.before:
+            Rectangle:
+                pos:self.pos
+                size:self.size
+                source:'main.png'
+    FloatLayout:
+        
+        size_hint:1,1
+        Label:
+            id: info
+            text: ''
+            markup: True
+            size_hint_y: 1.28
+            font_size: 20
+            height: 100
+        TextInput:        
+            id: username    
+            multiline:False
+            font_size: 15
+            size_hint:0.55, 0.05
+            pos_hint:{'center_x':0.5,'center_y':0.67}
+            hint_text:'ID'
+            font_size: 15
+            multiline: False
+            focus: True
+            on_text_validate: password.focus = True
+        TextInput:
+            id: password
+            multiline:False
+            password:True
+            font_size: 15
+            hint_text:'PASSWORD'
+            size_hint:0.55, 0.05
+            pos_hint:{'center_x':0.5,'center_y':0.60}
+            font_size: 15
+            multiline: False
+            focus: True
+            on_text_validate: root.firstscreen()
+        SBt:
+            canvas:
+                Rectangle:
+                    pos:self.pos
+                    size:self.size
+                    source:'login.png'
+            size_hint:0.3,0.06
+            pos_hint:{'center_x':0.337,'center_y':0.53}
+            back_color:(0.156,0.455,0.753,1.0)
+            on_press:root.do_login(username.text, password.text)
+        StrokeBt:
+            canvas:
+                Rectangle:
+                    pos:self.pos
+                    size:self.size
+                    source:'exit.png'
+            size_hint:0.3,0.06
+            pos_hint:{'center_x':0.657,'center_y':0.53}
+            back_color:(1,0.155,0.553,1.0)
+            on_press: root.on_close() 
+        SignupBt:
+            canvas:
+                Rectangle:
+                    pos:self.pos
+                    size:self.size
+                    source:'signup.png'
+            size_hint:0.3,0.06
+            pos_hint:{'center_x':0.5,'center_y':0.45}
+            back_color:(0.156,0.455,0.753,1.0)
+            on_press: root.signup()
+# ========================================================================
+<SignupScreen>:
+
+    username: username
+    password: password
+    parentname: parentname
+    childrenname: childrenname
+    FloatLayout:
+        canvas:
+            Rectangle:
+                pos:self.pos
+                size:self.size
+                source:'main.png'
+    FloatLayout:
+        
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                size_hint: 0.2,0.35
+            Label:
+                font_size: 20
+                text: '부모님용'
+                color: 0,0,0,5
+                size_hint: (0.4, 0.35)
+                pos_hint:{'center_x':0.5,'center_y':0.68}
+            CheckBox:
+                # name: name1
+                group: 'a'
+                size_hint: (0.4, 0.35)
+                pos_hint:{'center_x':0.5,'center_y':0.68}
+                color: 0,0,0,1
+            Label:
+                size_hint: 0.2,0.35
+            Label:
+                font_size: 20
+                text: '아이용' 
+                color: 0,0,0,5
+                size_hint: (0.4, 0.35)
+                pos_hint:{'center_x':0.5,'center_y':0.68}
+            CheckBox:
+                # name: name2
+                group: 'a'
+                size_hint: (0.4, 0.35)
+                pos_hint:{'center_x':0.5,'center_y':0.68}
+                color: 0,0,0,1 
+            Label:
+                size_hint: 0.2,0.35
+        TextInput:
+            id: username
+            multiline:False
+            font_size: 15
+            size_hint:0.65, 0.05
+            pos_hint:{'center_x':0.5,'center_y':0.60}
+            hint_text:'아이디'
+            font_size: 15
+            multiline: False
+            focus: True
+            on_text_validate: password.focus = True
+        TextInput:
+            id: password
+            multiline:False
+            password:True
+            font_size: 15
+            hint_text:'비밀번호'
+            size_hint:0.65, 0.05
+            pos_hint:{'center_x':0.5,'center_y':0.52}
+            font_size: 15
+            multiline: False
+            focus: True
+            on_text_validate: root.firstscreen()
+
+        TextInput:
+            id: parentname    
+            multiline:False
+            font_size: 15
+            size_hint:0.65, 0.05
+            pos_hint:{'center_x':0.5,'center_y':0.44}
+            hint_text:'부모님성함'
+            font_size: 15
+        TextInput:
+            id: childrenname    
+            multiline:False
+            font_size: 15
+            size_hint:0.65, 0.05
+            pos_hint:{'center_x':0.5,'center_y':0.36}
+            hint_text:'아이이름'
+            font_size: 15   
+        SBt:
+            canvas:
+                Rectangle:
+                    pos:self.pos
+                    size:self.size
+                    source:'submit.png'
+            size_hint:0.3,0.06
+            pos_hint:{'center_x':0.337,'center_y':0.28}
+            back_color:(0.156,0.455,0.753,1.0)
+            on_release: 
+                root.manager.transition.direction = "left"
+                root.submit()
+        StrokeBt:
+            canvas:
+                Rectangle:
+                    pos:self.pos
+                    size:self.size
+                    source:'cancel.png'
+            size_hint:0.3,0.06
+            pos_hint:{'center_x':0.657,'center_y':0.28}
+            back_color:(1,0.155,0.553,1.0)
+            on_release:
+                root.manager.transition.direction = "left"
+                root.login()
+# ========================================================================
+<SecondScreen>:
+    GridLayout:
+        rows: 5
+        orientation:"vertical"
+        canvas.before:
+            Color:
+                rgba: 0.2, .2, .2, 1
+            Rectangle:
+                pos: 0, 0
+                size: self.size
+        ActionBar:
+            pos_hint: {'top': 1}
+            
+            ActionView:
+                use_separator: True
+                ActionPrevious:
+                    title: "배주현부모님 반갑습니다!"
+                    with_previous: False
+                ActionButton:
+                    text: "로그아웃"
+                    on_press:
+                        root.manager.current = 'first' 
+                        root.manager.get_screen('first').reset()      
+
+        BoxLayout: 
+            padding: 2  
+            SBt2:
+                size_hint:1,1
+                source_img:'c1.PNG'
+                on_press:root.manager.current = 'second_graph'            
+        BoxLayout:
+            padding: 2    
+            SBt2:
+                size_hint:1,1
+                source_img:'c2.PNG'
+                on_press:root.manager.current = 'second_drawing' 
+
+        BoxLayout:    
+            padding: 2
+            SBt2:
+                text_size: self.size  
+                size_hint:1,1
+                source_img:'c3.PNG'
+                on_press:root.manager.current = 'second_input' 
+        BoxLayout:   
+            padding: 2
+            SBt2:
+                text_size: self.size  
+                size_hint:1,1
+                source_img:'c4.PNG'
+                on_press:root.manager.current = 'second_video' 
+# ========================================================================  
+<DrawingScreen>:
+    GridLayout: 
+        orientation: "vertical"
+        rows:3
+        ActionBar:
+            pos_hint: {'top': 1}
+            ActionView:
+                use_separator: True
+                ActionPrevious:
+                    title: "그림보기"
+                    with_previous: False 
+                ActionButton:
+                    text: "뒤로가기"
+                    on_press:root.manager.current = 'second' 
+        Img:
+            source:self.path3
+            state:'play'
+            options: {'allow_stretch': True}
+        Rv3:
+            pos_hint:{'x':0,'y':0.1}
+            id:rv3            
+            data:self.data
+            viewclass: 'SelectableLabel3'
+            SelectableRecycleBoxLayout:                
+                default_size: None, dp(56)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+                multiselect: False
+                touch_multiselect: True
+
+<SelectableLabel3>:
+    # Draw a background to indicate selection
+    canvas.before:
+        Color:
+            rgba: (.7, .0, .2, .2) if self.selected else (0, 0, 0, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    canvas.before:
+        Color:
+            rgba: (.7, .0, .2, .2) if self.selected else (0, 0, 0, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size  
+
+
+
+<GraphScreen>:
+    GridLayout: 
+        orientation: "vertical"
+        rows:2
+        ActionBar:
+            pos_hint: {'top': 1}
+            ActionView:
+                use_separator: True
+                ActionPrevious:
+                    title: "체온보기"
+                    with_previous: False                
+                ActionButton:
+                    text: "뒤로가기"
+                    on_press:root.manager.current = 'second' 
+        MyBox:
+    
+<InputScreen>:
+    GridLayout: 
+        orientation: "vertical"
+        rows:3
+        ActionBar:
+            pos_hint: {'top': 1}
+            ActionView:
+                use_separator: True
+                ActionPrevious:
+                    title: "그림보기"
+                    with_previous: False 
+                ActionButton:
+                    text: "뒤로가기"
+                    on_press:root.manager.current = 'second' 
+        Word:
+            source:self.path4
+            state:'play'
+            options: {'allow_stretch': True}
+        Rv4:
+            pos_hint:{'x':0,'y':0.1}
+            id:rv4           
+            data:self.data
+            viewclass: 'SelectableLabel4'
+            SelectableRecycleBoxLayout:                
+                default_size: None, dp(56)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+                multiselect: False
+                touch_multiselect: True
+
+<SelectableLabel4>:
+    # Draw a background to indicate selection
+    canvas.before:
+        Color:
+            rgba: (.7, .0, .2, .2) if self.selected else (0, 0, 0, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    canvas.before:
+        Color:
+            rgba: (.7, .0, .2, .2) if self.selected else (0, 0, 0, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size  
+
+<VideoScreen>:   
+    GridLayout: 
+        orientation: "vertical"
+        rows:3
+        ActionBar:
+            pos_hint: {'top': 1}
+            ActionView:
+                use_separator: True
+                ActionPrevious:
+                    title: "아이영상"
+                    with_previous: False
+                ActionButton:
+                    text: "뒤로가기"
+                    on_press:root.manager.current = 'second' 
+                        
+        Vid:
+            source:self.path
+            state:"play"
+            options: {'allow_stretch': True}
+        Rv:
+            pos_hint:{'x':0,'y':0.1}
+            id:rv            
+            data:self.data
+            viewclass: 'SelectableLabel'
+            SelectableRecycleBoxLayout:                
+                default_size: None, dp(56)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+                multiselect: False
+                touch_multiselect: True
+    
+<SelectableLabel>:
+    # Draw a background to indicate selection
+    canvas.before:
+        Color:
+            rgba: (.7, .0, .2, .2) if self.selected else (0, 0, 0, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    canvas.before:
+        Color:
+            rgba: (.7, .0, .2, .2) if self.selected else (0, 0, 0, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size  
+
+#==========================================================================
+<ChildrenScreen>:
+    GridLayout:
+        rows: 4
+        orientation:"vertical"
+        canvas.before:
+            Color:
+                rgba: 0.2, .2, .2, 1
+            Rectangle:
+                pos: 0, 0
+                size: self.size
+        ActionBar:
+            back_color:(0.6,0.6,0.6,0.9)
+            pos_hint: {'top': 1}
+            
+            ActionView:
+                use_separator: True
+                ActionPrevious:
+                    title: "배주현아동 반갑습니다!"
+                    with_previous: False
+                ActionButton:
+                    text: "로그아웃"
+                    on_press:
+                        root.manager.current = 'first' 
+                        root.manager.get_screen('first').reset()       
+      
+        BoxLayout:    
+            padding: 10
+            SBt2:
+                size_hint:1,1
+                source_img:'c5.PNG'
+                on_press:root.manager.current = 'third_drawing'    
+        BoxLayout:   
+            padding: 10
+            SBt2:
+                text_size: self.size  
+                size_hint:1,1
+                source_img:'c6.PNG'
+                on_press:root.manager.current = 'third_input' 
+        BoxLayout:   
+            padding: 10
+            SBt2:
+                text_size: self.size  
+                size_hint:1,1
+                source_img:'c7.PNG'
+                on_press:root.manager.current = 'third_video' 
+
+
+<KidDrawingScreen>:
+    GridLayout: 
+        orientation: "vertical"
+        rows:2
+        ActionBar:
+            pos_hint: {'top': 1}
+            ActionView:
+                use_separator: True
+                ActionPrevious:
+                    title: "그림그리기"
+                    with_previous: False
+                ActionButton:
+                    text: "뒤로가기"
+                    on_press:root.manager.current = 'third' 
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:  
+                size_hint: 0.05, 0.1
+
+            Button:
+                background_color: (0,0,0,0)
+                canvas:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos:self.pos
+                        size:self.size
+                        source:'clear.png'
+                text: '이전지우기'
+                pos_hint: {"center_x":.01, "y":.01} 
+                size_hint: 0.05, 0.1
+                on_press: 
+                    root.undo()
+            Label:
+                size_hint: 0.05, 0.1
+
+            Button:
+                background_color: (0,0,0,0)
+                canvas:
+                    Rectangle:
+                        pos:self.pos
+                        size:self.size
+                        source:'save1.png'
+                text: '저장하기'
+                pos_hint: {"center_x":.01, "y":.01} 
+                size_hint: 0.05, 0.1
+    
+                on_press: 
+                    root.Ss()
+            Label:
+                size_hint: 0.05, 0.1
+   
+<KidInputScreen>:
+    GridLayout: 
+        orientation: "vertical"
+        rows:3
+        ActionBar:
+
+            pos_hint: {'top': 1}
+            ActionView:
+                use_separator: True
+                ActionPrevious:
+                    title: "단어놀이"
+                    with_previous: False
+                ActionButton:
+                    text: "뒤로가기"
+                    on_press:root.manager.current = 'third' 
+
+<KidVideoScreen>:
+    GridLayout: 
+        orientation: "vertical"
+        rows:3
+        ActionBar:
+            pos_hint: {'top': 1}
+            ActionView:
+                use_separator: True
+                ActionPrevious:
+                    title: "내모습보기"
+                    with_previous: False
+
+                ActionButton:
+                    text: "뒤로가기"
+                    on_press:root.manager.current = 'third' 
+        Vid2:
+            source:self.path2
+            state:"play"
+            options: {'allow_stretch': True}
+        Rv2:
+            pos_hint:{'x':0,'y':0.1}
+            id:rv2            
+            data:self.data
+            viewclass: 'SelectableLabel2'
+            SelectableRecycleBoxLayout:                
+                default_size: None, dp(56)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+                multiselect: False
+                touch_multiselect: True
+    
+<SelectableLabel2>:
+    # Draw a background to indicate selection
+    canvas.before:
+        Color:
+            rgba: (.7, .0, .2, .2) if self.selected else (0, 0, 0, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    canvas.before:
+        Color:
+            rgba: (.7, .0, .2, .2) if self.selected else (0, 0, 0, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size        
+        
+        
+
+ 
