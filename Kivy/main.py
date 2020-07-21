@@ -1,15 +1,15 @@
 from kivy.config import Config
 Config.set('graphics', 'width', '360')
 Config.set('graphics', 'height', '600')
-import playmo as pl
-import playimg as plimg
-import playword as plword
-from playword import *
 
 import kivy
 from kivy.app import App
 from kivymd.app import MDApp
 from os.path import dirname
+import playmo as pl
+import playimg as plimg
+import playword as plword
+from playword import *
 
 import time
 from kivy.properties import StringProperty
@@ -49,6 +49,7 @@ from kivy.uix.behaviors import FocusBehavior
 from kivy.uix.recycleview.layout import LayoutSelectionBehavior
 from kivy.uix.image import Image
 from kivy.uix.label import Label
+
 
 global path_real
 path_real='asdkjfsdkjfkl'
@@ -470,15 +471,15 @@ class SelectableLabel(RecycleDataViewBehavior, Label):#셀렉트 리스트가 �
 #====================================================
 #====================================================비디오2
 
-# class Vid2(VideoPlayer):
+class Vid2(VideoPlayer):
     
-#     path2 = StringProperty(f"{dirname(__file__)}/covid.avi")
-#     def on_state(self, instance, value):
-#         global path_real2
-#         path_real2 = instance
-#         # print(instance.source)        
-#         # print(value)
-#         return super().on_state(instance, value)
+    path2 = StringProperty(f"{dirname(__file__)}/covid.avi")
+    def on_state(self, instance, value):
+        global path_real2
+        path_real2 = instance
+        # print(instance.source)        
+        # print(value)
+        return super().on_state(instance, value)
     
 class Rv2(RecycleView):
     def __init__(self, **kwargs):
@@ -648,7 +649,7 @@ class Manager(ScreenManager):
     pass
 db = DataBase(f"{dirname(__file__)}/users.csv")
 
-class switch333App(MDApp):
+class CoronaApp(MDApp):
     username = StringProperty(None) # 이름 입력값
     password = StringProperty(None) # P/W 입력값
     
@@ -658,4 +659,4 @@ class switch333App(MDApp):
 
 
 if __name__ == '__main__':
-    switch333App().run()
+    CoronaApp().run()
