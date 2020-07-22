@@ -157,30 +157,22 @@ class MyBox(BoxLayout):
 
 
 class FirstScreen(Screen): #login Screen
-    
     def do_login(self, usernameText, passwordText): #do_login 함수에 loginText, passwordText입력받아라.
         username = ObjectProperty(None)
         password = ObjectProperty(None)
-        
-        # app = App.get_running_app() 
         username = usernameText
         password = passwordText
         info = self.ids.info
         if username == "" and password == "":
             invalidLogin()       
         elif username == "1" and password == "1":
-        
             self.manager.current = 'second'
-
         elif username == "2" and password == "2":
-            
             self.manager.current = 'third'
-
         elif db.validate(self.username.text, self.password.text):
             SecondScreen.current = self.username.text and self.password.text
             self.reset()
             self.manager.current = "second"
-
         else:
             print("")
 
@@ -209,12 +201,10 @@ class SignupScreen(Screen):
     def submit(self): 
         if self.username.text == "":
             invalidForm1()
-
         elif self.username.text != "" or self.password.text != "":  
             db.add_user(self.username.text, self.password.text, self.parentname.text, self.childrenname.text)
             self.reset()
             self.manager.current = "signup"
-
         else:
             invalidForm()
             
@@ -235,35 +225,25 @@ def invalidLogin():
                   size_hint=(None, None), size=(300, 100),  background = 'popup.png')
     pop.open()
 
-
 def invalidForm():
-    
     pop = Popup(  title= "회원가입" ,
                  content=Label(text='등록된 아이디 입니다.'),
                   size_hint=(None, None), size=(300, 100),  background = 'popup1.png')   
     pop.open()
 
 def invalidForm1():
-    
     pop = Popup(  title= "회원가입" ,
                  content=Label(text='아이디를 입력하세요.'),
                   size_hint=(None, None), size=(300, 100),  background = 'popup1.png')   
     pop.open()
 
-#============================================================================================
-
-#이미지 띄우는거
+#그림 띄우기
 class Img(Image):
-
     path3 = StringProperty(f"{dirname(__file__)}/draw/IMG_20200530_183509.png")
-    # path = StringProperty('C:/Users/w/last/draw/covid.avi')
     def on_state(self, instance, value):
         global path_real3
         path_real3 = instance
-        # print(instance.source)        
-        # print(value)
         return super().on_state(instance, value)
-
 
 class Rv3(RecycleView):
     def __init__(self, **kwargs):
@@ -275,20 +255,15 @@ class Rv3(RecycleView):
         for item in list___:
             self.data.append({'text':str(item),'font_name':'HANDotum'} )#data 를 만들 때 튜플 형식으로 만들어야 한다.(key:vlaue)
 
-
 class SelectableRecycleBoxLayout(FocusBehavior, LayoutSelectionBehavior,
                                  RecycleBoxLayout):# 셀렉트 리스트 화면 구성
     ''' Adds selection and focus behaviour to the view. '''
 
-
 class SelectableLabel3(RecycleDataViewBehavior, Label):#셀렉트 리스트가 동작 하는것을 감지 하는 클래스
-    
-
     def __init__(self,**kwargs):
         super(SelectableLabel3,self).__init__()
         self.m3 = plimg.FuncImg()
         self.realpath3 = os.path.realpath('.')
-        # print(self.realpath3)
 
     ''' Add selection support to the Label '''
     index = None
@@ -313,29 +288,15 @@ class SelectableLabel3(RecycleDataViewBehavior, Label):#셀렉트 리스트가 �
         ''' Respond to the selection of items in the view. '''        
         self.selected = is_selected
         if is_selected:            
-            # print("selection changed to {0}".format(rv.data[index]))
-            # print(rv.data[index]['text'])
-            # print (path_real3)
             path_real.source = f"{dirname(__file__)}/draw/" + rv.data[index]['text']
 
-        # else:
-            # print("selection removed for {0}".format(rv.data[index]))
-
-
-#============================================================================================
-
-#단어 띄우는거=================================
+#단어 띄우기
 class Word(Image):
-
     path4 = StringProperty(f"{dirname(__file__)}/word/IMG_20200530_183720.png")
-    # path = StringProperty('C:/Users/w/last/draw/covid.avi')
     def on_state(self, instance, value):
         global path_real4
         path_real4 = instance
-        # print(instance.source)        
-        # print(value)
         return super().on_state(instance, value)
-
 
 class Rv4(RecycleView):
     def __init__(self, **kwargs):
@@ -343,28 +304,21 @@ class Rv4(RecycleView):
         list___w = ListProperty([])
         plword.FuncWord()
         list___w = plword.FuncWord.file_list
-        
         for item in list___w:
             self.data.append({'text':str(item),'font_name':'HANDotum'} )#data 를 만들 때 튜플 형식으로 만들어야 한다.(key:vlaue)
-
 
 class SelectableRecycleBoxLayout(FocusBehavior, LayoutSelectionBehavior,
                                  RecycleBoxLayout):# 셀렉트 리스트 화면 구성
     ''' Adds selection and focus behaviour to the view. '''
 
-
 class SelectableLabel4(RecycleDataViewBehavior, Label):#셀렉트 리스트가 동작 하는것을 감지 하는 클래스
-    
-
     def __init__(self,**kwargs):
         super(SelectableLabel4,self).__init__()
         self.m4 = plword.FuncWord()
         self.realpath4 = os.path.realpath('.')
-        # print(self.realpath4)
 
     ''' Add selection support to the Label '''
     index = None
-    
     selected = BooleanProperty(False)
     selectable = BooleanProperty(True)
     def refresh_view_attrs(self, rv, index, data):
@@ -385,18 +339,12 @@ class SelectableLabel4(RecycleDataViewBehavior, Label):#셀렉트 리스트가 �
         ''' Respond to the selection of items in the view. '''        
         self.selected = is_selected
         if is_selected:            
-            # print("selection changed to {0}".format(rv.data[index]))
-            # print(rv.data[index]['text'])
-            # print (path_real3)
             path_real.source = f"{dirname(__file__)}/word/" + rv.data[index]['text']
-
         else:
             print("selection removed for {0}".format(rv.data[index]))
 
-# ====================================================비디오1
-
+#비디오
 class Vid(VideoPlayer):
-    
     path = StringProperty(f"{dirname(__file__)}/covid.avi")
     def on_state(self, instance, value):
         global path_real
@@ -404,9 +352,6 @@ class Vid(VideoPlayer):
         # print(instance.source)        
         # print(value)
         return super().on_state(instance, value)
-    
-
-    
         
 class Rv(RecycleView):
     def __init__(self, **kwargs):
@@ -414,7 +359,6 @@ class Rv(RecycleView):
         list_ = ListProperty([])
         pl.FuncMp3()
         list_ = pl.FuncMp3.file_list
-        
         # self.data = [{'text':str(i)} for i in fm.Func_Class.file_list]#data 를 만들 때 튜플 형식으로 만들어야 한다.(key:vlaue)
         for item in list_:
             self.data.append({'text':str(item),'font_name':'HANDotum'} )#data 를 만들 때 튜플 형식으로 만들어야 한다.(key:vlaue)
@@ -427,18 +371,13 @@ class SelectableRecycleBoxLayout(FocusBehavior, LayoutSelectionBehavior,
 
 
 class SelectableLabel(RecycleDataViewBehavior, Label):#셀렉트 리스트가 동작 하는것을 감지 하는 클래스
-    
-
     def __init__(self,**kwargs):
         super(SelectableLabel,self).__init__()
         self.m = pl.FuncMp3()
         self.realpath = os.path.realpath('.')
-        # print(self.realpath)
-        
 
     ''' Add selection support to the Label '''
     index = None
-    
     selected = BooleanProperty(False)
     selectable = BooleanProperty(True)
     def refresh_view_attrs(self, rv, index, data):
@@ -459,26 +398,16 @@ class SelectableLabel(RecycleDataViewBehavior, Label):#셀렉트 리스트가 �
         ''' Respond to the selection of items in the view. '''        
         self.selected = is_selected
         if is_selected:            
-            # print("selection changed to {0}".format(rv.data[index]))
-            # print(rv.data[index]['text'])
-            # print (path_real)
             path_real.source = f"{dirname(__file__)}/mp4/" + rv.data[index]['text']
-            # self.m.path_chk(aa)
-            # self.m.song_play(rv.data[index]['text'])
-            
-        # else:
-        #     print("selection removed for {0}".format(rv.data[index]))
-#====================================================
-#====================================================비디오2
+        else:
+            print("selection removed for {0}".format(rv.data[index]))
 
+#비디오_두번째
 class Vid2(VideoPlayer):
-    
     path2 = StringProperty(f"{dirname(__file__)}/covid.avi")
     def on_state(self, instance, value):
         global path_real2
         path_real2 = instance
-        # print(instance.source)        
-        # print(value)
         return super().on_state(instance, value)
     
 class Rv2(RecycleView):
@@ -487,28 +416,24 @@ class Rv2(RecycleView):
         list__ = ListProperty([])
         pl.FuncMp3()
         list__ = pl.FuncMp3.file_list
-        
         # self.data = [{'text':str(i)} for i in fm.Func_Class.file_list]#data 를 만들 때 튜플 형식으로 만들어야 한다.(key:vlaue)
         for item in list__:
             self.data.append({'text':str(item),'font_name':'HANDotum'} )#data 를 만들 때 튜플 형식으로 만들어야 한다.(key:vlaue)
+
 ####################셀렉트 만들기########################
     pass
 class SelectableRecycleBoxLayout(FocusBehavior, LayoutSelectionBehavior,
                                  RecycleBoxLayout):# 셀렉트 리스트 화면 구성
     ''' Adds selection and focus behaviour to the view. '''
 
-
 class SelectableLabel2(RecycleDataViewBehavior, Label):#셀렉트 리스트가 동작 하는것을 감지 하는 클래스
-
     def __init__(self,**kwargs):
         super(SelectableLabel2,self).__init__()
         self.m2 = pl.FuncMp3()
         self.realpath2 = os.path.realpath('.')
-        # print(self.realpath2)
 
     ''' Add selection support to the Label '''
     index = None
-    
     selected = BooleanProperty(False)
     selectable = BooleanProperty(True)
     def refresh_view_attrs(self, rv, index, data):
@@ -529,17 +454,9 @@ class SelectableLabel2(RecycleDataViewBehavior, Label):#셀렉트 리스트가 �
         ''' Respond to the selection of items in the view. '''        
         self.selected = is_selected
         if is_selected:            
-            # print("selection changed to {0}".format(rv.data[index]))
-            # print(rv.data[index]['text'])
-            # print (path_real2)
             path_real2.source = f"{dirname(__file__)}/mp4/" + rv.data[index]['text']
-            # self.m.path_chk(aa)
-            # self.m.song_play(rv.data[index]['text'])
-            
-        # else:
-        #     print("selection removed for {0}".format(rv.data[index]))
-
-#===================================================================비디오2 끝
+        else:
+            print("selection removed for {0}".format(rv.data[index]))
 
 class SignupScreen(Screen):
     pass
@@ -547,9 +464,6 @@ class SignupScreen(Screen):
 class Actionbar(Widget):
     pass
 class SecondScreen(Screen):
-    # def __init__(self,**kwargs):
-    #     super(SecondScreen,self).__init__(**kwargs)
-    #     self.ids.sjh.title="배주현"
     pass
 
 class GraphScreen(Screen):
@@ -565,10 +479,6 @@ class VideoScreen(Screen):
     pass
 class ThirdScreen(Screen):    
     pass
-
-
-
-
 
             
 #드로잉용 임포트
@@ -587,11 +497,6 @@ class KidDrawingScreen(Screen):
     undolist = []
     objects = []
     drawing = False
-
-    # def __init__(self):
-    #     super(KidDrawingScreen, self).__init__(**kwargs) #
-    #     with self.canvas: #캔퍼스 추가.
-    #         Color(1, 1, 1, 1)
 
     def on_touch_up(self, touch):
         self.drawing = False
@@ -622,19 +527,12 @@ class KidDrawingScreen(Screen):
             self.undolist.append(item)
             self.canvas.remove(item)
 
-    # def redo(self):
-    #     item = self.undolist.pop(-1)
-    #     self.objects.append(item)
-    #     self.canvas.add(item)
-
     def clear_canvas(self): # 캔퍼스를 지우는 기능. 캔퍼스는 투명도 0으로 만드어놨기때문에 보이지는 않지만, 지우는 기능은 가능하다. 
         self.canvas.clear()
-        # self.add_widget(self.dw)
 
     def Ss(self): 
         timestr = time.strftime("%Y%m%d_%H%M%S")
         self.export_to_png(f"{dirname(__file__)}\draw\IMG_"+timestr+".png")
-        # print(timestr)
 
 class KidInputScreen(Screen):
     def __init__(self, **kwargs): #
@@ -655,8 +553,6 @@ class CoronaApp(MDApp):
     
     def build(self):
         return Manager()
-
-
 
 if __name__ == '__main__':
     CoronaApp().run()
