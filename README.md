@@ -386,8 +386,8 @@ class powermode :
     #로그아웃 함수 및 버튼 종료=======================================
 window.mainloop()
 ```
-<img src="/images/tk_login.jpg" width="40%">&nbsp;<img src="/images/main.jpg" width="40%"><br>
-<img src="/images/face.jpg" width="40%">&nbsp;<img src="/images/cam.jpg" width="40%"><br>
+<img src="/images/tk_login.jpg" width="30%">&nbsp;<img src="/images/main.jpg" width="30%"><br>
+<img src="/images/face.jpg" width="30%">&nbsp;<img src="/images/cam.jpg" width="30%"><br>
 <br>
 
 ## 7. 코드 구현 후 문제점
@@ -1645,14 +1645,21 @@ switch.kv
             pos: self.pos
             size: self.size        
 ```
-<img src="/images/login.jpg" width="40%">&nbsp;<img src="/images/kivy_main.jpg" width="40%"><br>
-<img src="/images/graph1.jpg" width="40%">&nbsp;<img src="/images/graph2.jpg" width="40%"><br>
-<img src="/images/pic.jpg" width="40%">&nbsp;<img src="/images/word.jpg" width="40%"><br>
-<img src="/images/movie.jpg" width="40%"><br>
+<img src="/images/login.jpg" width="30%">&nbsp;
+<img src="/images/kivy_main.jpg" width="30%">&nbsp;
+<img src="/images/graph1.jpg" width="30%">
+<br>
+<img src="/images/graph2.jpg" width="30%">&nbsp;
+<img src="/images/pic.jpg" width="30%">&nbsp;
+<img src="/images/word.jpg" width="30%">
+<br>
+<img src="/images/movie.jpg" width="30%"><br>
 로그인 및 부모용 화면
 <br><br>
-<img src="/images/main2.jpg" width="40%">&nbsp;<img src="/images/draw.jpg" width="40%"><br>
-<img src="/images/wording.jpg" width="40%">&nbsp;<img src="/images/sign.jpg" width="40%"><br>
+<img src="/images/main2.jpg" width="30%">&nbsp;
+<img src="/images/draw.jpg" width="30%">&nbsp;
+<img src="/images/wording.jpg" width="30%">
+<br><img src="/images/sign.jpg" width="30%"><br>
 회원가입 및 아이용 화면
 <br><br>
 
