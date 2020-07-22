@@ -1653,11 +1653,8 @@ switch.kv
 <br><br>
 <img src="/images/main2.jpg" width="40%">&nbsp;<img src="/images/draw.jpg" width="40%"><br>
 <img src="/images/wording.jpg" width="40%">&nbsp;<img src="/images/sign.jpg" width="40%"><br>
+회원가입 및 아이용 화면
 <br><br>
-
-- 그림보기 화면입니다.
-- draw폴더에 저장되어 있는 그림(아이들이 그려서 저장한)파일들을 리스트 형태로 열거해놓고, 선택한 그림을 보여주는 방식입니다.
-
 
 ## 9. kivy 전환 후 변경점
 - UI의 촌스러움은 많이 개선되었습니다. 기능 개선도 일부 진행되었습니다.
